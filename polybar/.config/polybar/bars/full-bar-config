@@ -1,0 +1,122 @@
+include-file = ~/.config/polybar/colors
+
+[global/wm]
+
+[settings]
+pseudo-transparency = false
+
+[bar/main]
+modules-left = bspwm 
+modules-right = battery pulseaudio date 
+modules-center = 
+font-0 = Hack:style=Regular:size=12;3
+font-1 = Symbols Nerd Font:size=12;4
+font-2 = icomoon\-feather:style=Regular
+font-3 = Iosevka Term,Iosevka Nerd Font:size=21;4
+background = ${colors.background-left}
+foreground = #fff
+tray-position = right
+padding-right = 1
+padding-left = 1
+offset-y = 8
+offset-x = 8
+width = 100%:-16
+radius = 10
+border-color = #fff
+module-margin = 1
+height = 34
+
+[module/date]
+type = internal/date
+interval = 1
+date = %H:%M%
+;date= %{A1:alacritty -e calcurse:}%H:%M%%{A}
+format-prefix-font = 2
+format-prefix = " "
+;format-prefix-background = ${colors.background-left}
+;format-background = ${colors.background-left} 
+border-size = 0
+
+[module/pulseaudio]
+type = internal/pulseaudio
+interval=5
+
+format-volume = <ramp-volume><label-volume>
+format-muted = <label-muted>
+
+;format-muted-background = ${colors.background-left}
+;format-volume-background = ${colors.background-left}
+format-muted-foreground = #f00
+
+label-volume = %percentage%%
+label-muted = %percentage%%
+
+format-muted-prefix = " "
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+ramp-volume-3 = " "
+ramp-volume-4 = " "
+ramp-volume-5 = " "
+ramp-volume-6 = " "
+ramp-volume-7 = " "
+ramp-volume-8 = " "
+ramp-volume-9 = " "
+
+[module/battery]
+type = internal/battery
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging-prefix = ""
+;format-background = ${colors.background-left}
+;format-charging-prefix-background = ${colors.background-left}
+;format-discharging-background = ${colors.background-left}
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = Fully charged
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+ramp-capacity-1-foreground = #f00
+ramp-capacity-2-foreground = #fff324
+ramp-capacity-3-foreground = #fff324
+ramp-capacity-4-foreground = #e69138
+ramp-capacity-5-foreground = #e69138
+ramp-capacity-6-foreground = #0f0
+ramp-capacity-7-foreground = #0f0
+ramp-capacity-8-foreground = #0f0
+ramp-capacity-9-foreground = #0f0
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused-padding = 1
+label-occupied-padding = 1
+label-urgent-padding = 1
+label-empty-padding = 1
+
+label-focused = %index%
+label-occupied = 
+label-urgent = 
+label-empty = 
+
+;label-urgent-underline = ${colors.alert}
+;label-focused-underline= ${colors.primary}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:10:13:...%
+label-background = ${colors.background-left}

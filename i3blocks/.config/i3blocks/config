@@ -1,0 +1,22 @@
+[window]
+command=while read -r line; do echo -e "$line"; done < <(xtitle -s)
+interval=-3 # persist
+
+[sound]
+align=center
+command=~/.config/i3blocks/scripts/volume.sh
+markup=pango
+interval=once
+signal=10
+
+[battery]
+command=~/.config/i3blocks/scripts/battery.sh
+markup=pango
+interval=10
+
+[time]
+command=date "+%H:%M"
+interval=1
+
+[padding]
+full_text=

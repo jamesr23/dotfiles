@@ -1,0 +1,192 @@
+include-file = ~/.config/polybar/colors
+
+[global/wm]
+
+[settings]
+pseudo-transparency = false
+
+format-foreground = ${colors.color5}
+format-background = #ff282b38
+format-underline = #ff282b38
+format-overline = #ff282b38
+
+;format-foreground = #302D41
+;format-background = #F28FAD
+;format-background = #C9CBFF
+;format-background = #ff282b38
+;format-background = #757c9c
+;format-underline = #757c9c
+;format-overline = #ff282b38
+;format-underline = #ff282b38
+
+[bar/main]
+wm-restack = bspwm
+modules-left = bspwm xwindow
+modules-right = network battery pulseaudio date 
+modules-center = 
+font-0 = Hack:style=Regular:size=12;3
+font-1 = Symbols Nerd Font:size=12;4
+font-2 = icomoon\-feather:style=Regular:size=12;3
+font-3 = Iosevka Term,Iosevka Nerd Font:size=21;4
+background = #ff282b38
+foreground = #fff
+padding = 1
+tray-position = none
+height = 30
+underline-size = 4
+overline-size = 4
+border-size = 0
+module-margin = 1
+radius = 0
+offset-y = 0
+double-click-left = wp
+
+[module/mpd]
+type = internal/mpd
+interval = 1
+format-offline = mpd offline
+font = 4
+format-online = <label-time> <label-song>
+;format-online = <icon-prev> <toggle> <icon-next> <label-time> <label-song>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = ${self.format-online}
+icon-play = "⏵"
+icon-pause = "⏸"
+icon-stop = "⏹"
+icon-prev = "⏮"
+icon-next = "⏭"
+label-song = %artist% - %title%
+label-time = %elapsed% / %total%
+
+[module/network]
+type = internal/network
+interface = wlan0
+interval = 1
+format-font = 3
+format-connected-prefix = " "
+format-connected = "<label-connected>"
+
+format-disconnected-prefix = " "
+format-disconnected = "<label-disconnected>"
+
+format-packetloss-prefix = " "
+format-packetloss = <label-packetloss>
+forma-packetloss-foreground = #f00
+
+label-connected = %essid%
+label-disconnected = "disconnected"
+label-packetloss = %essid%
+
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+[module/date]
+type = internal/date
+interval = 1
+format = "<label>"
+date = "%H:%M%"
+;date= %{A1:alacritty -e calcurse:}%H:%M%%{A}
+format-prefix-font = 2
+format-prefix = " "
+border-size = 0
+
+[module/pulseaudio]
+type = internal/pulseaudio
+interval=5
+
+format-volume = "<ramp-volume><label-volume>"
+format-muted = "<label-muted>"
+
+format-muted-foreground = #f00
+
+label-volume = %percentage%%
+label-muted = %percentage%%
+
+format-muted-prefix = " "
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+ramp-volume-3 = " "
+ramp-volume-4 = " "
+ramp-volume-5 = " "
+ramp-volume-6 = " "
+ramp-volume-7 = " "
+ramp-volume-8 = " "
+ramp-volume-9 = " "
+
+[module/battery]
+type = internal/battery
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+
+label-charging-foreground = ${colors.color5}
+label-discharging-foreground = ${colors.color5}
+;label-charging-foreground = #ff282b38
+;label-discharging-foreground = #ff282b38
+;label-discharging-foreground = #575268
+;label-charging-foreground = #575268
+format-charging = "<ramp-capacity> <label-charging>"
+format-discharging = "<ramp-capacity> <label-discharging>"
+format-charging-prefix = ""
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = Fully charged
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+ramp-capacity-5 = ""
+ramp-capacity-6 = ""
+ramp-capacity-7 = ""
+ramp-capacity-8 = ""
+ramp-capacity-9 = ""
+
+ramp-capacity-0-foreground = #f00
+ramp-capacity-1-foreground = #f00
+ramp-capacity-2-foreground = #fff324
+ramp-capacity-3-foreground = #fff324
+ramp-capacity-4-foreground = #e69138
+ramp-capacity-5-foreground = #e69138
+ramp-capacity-6-foreground = #0f0
+ramp-capacity-7-foreground = #0f0
+ramp-capacity-8-foreground = #0f0
+ramp-capacity-9-foreground = #0f0
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused-padding = 1
+label-occupied-padding = 1
+label-urgent-padding = 1
+label-empty-padding = 1
+
+label-focused = "%index%" 
+label-occupied = 
+label-urgent = 
+label-empty = 
+
+;label-urgent-underline = ${colors.alert}
+;label-focused-underline= ${colors.primary}
+
+[module/xwindow]
+type = internal/xwindow
+format-foreground = ${colors.color5}
+format = <label>
+format-empty = <label-empty>
+label = "%title%"
+label-empty =
+;label-empty-minlen = 20
+label-maxlen = 40
+;label-minlen = 20
+label-alignment = left
+format-background = #ff282b38
+format-underline = #ff282b38

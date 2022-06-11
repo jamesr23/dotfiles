@@ -1,0 +1,31 @@
+#!/bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         0
+bspc config window_gap           2
+bspc config top_padding          30
+bspc config right_padding        2
+bspc config left_padding         2
+bspc config bottom_padding       2
+
+bspc config split_ratio          0.52
+bspc config click_to_focus       true
+bspc config click_to_focus       true
+bspc config pointer_modifier     mod4
+
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+dunst &
+wp
+# while sleep 30; do wp; done &
+picom --experimental-backends &
+fcitx5 -d
+$HOME/.config/polybar/launch.sh
+
+bspc rule -r '*'
+bspc rule -a 'feh:*:*' state=floating
+bspc rule -a '*:*:Picture-in-Picture' state=floating
